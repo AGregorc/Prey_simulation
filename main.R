@@ -14,7 +14,7 @@ source("RL.R")
 # the vector c(30, 4, 5) defines the maximum values of the corresponding elements 
 # in the adopted state description
 
-qmat <- qlearning(c(30, 4, 5), maxtrials=1000)
+qmat <- qlearning(c(30, 30, 30, 30, 5), maxtrials=1000)
 
 save(qmat, file="qmat.RData")
 load(file="qmat.RData")

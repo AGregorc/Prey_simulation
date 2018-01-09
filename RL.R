@@ -39,11 +39,17 @@ getStateDesc <- function(simData, preyId)
 	else
 		border <- 5
 
+	dsw = min(max(getPreyDistToNearestWater(simData, preyId), 1), 30)
+	drw = getPreyDirectionToNearestWater(simData, preyId)
 	
-	c(distance, direction, border)
+	dsf = min(max(getPreyDistToNearestForest(simData, preyId), 1), 30)
+	drf = getPreyDirectionToNearestForest(simData, preyId)
+
+	dsg = min(max(getPreyDistToNearestGrass(simData, preyId), 1), 30)
+	drg = getPreyDirectionToNearestGrass(simData, preyId)
+	
+	c(distance, dsw, dsf, dsg, border)
 }
-
-
 
 # The result of the getReward function is the reward (or punishment) that the agent collects after performing the specified action.
 # The returned reward should encourage the agent to perform useful actions and to discourage harmful actions. 
