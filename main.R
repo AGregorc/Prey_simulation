@@ -35,14 +35,14 @@ buildGraphVector <- function(states, initial_trials, max_trials, step) {
 
 getAvg <- function(qmat) {
   sum <- 0
-  for (i in 1:20) {
+  for (i in 1:100) {
     sum <- sum + simulation(Q=qmat)
   }
   sum <- sum/20
 }
 
 # just for testing if the function is working
-graphVector <- buildGraphVector(c(30, 4, 5), 100, 1000, 100)
+graphVector <- buildGraphVector(c(30, 4, 5), 100, 10000, 500)
 save(graphVector, file="graph.RData")
 
 

@@ -531,7 +531,7 @@ simulation <- function(Q=NULL, maxSteps=1000, text=F)
 	while (simData$running)
 	{		
 		simData <- simulationStep(simData, Q)
-		simulationDraw(simData, text)
+		# simulationDraw(simData, text)
  
 		if (!isSimulationAlive(simData, maxSteps))
 			break	
