@@ -82,6 +82,7 @@ initConsts()
 
 perlin_noise <- function(n=5, m=7, N=100, M=100) 
 {
+  set.seed(42, kind = NULL, normal.kind = NULL)
 	vector_field <- apply(array(rnorm(2*n*m), dim=c(2,n,m) ), 2:3, function(u){u/sqrt(sum(u^2))})
 	f <- function(x,y) 
 	{
@@ -109,6 +110,7 @@ perlin_noise <- function(n=5, m=7, N=100, M=100)
   	}
 	xs <- seq(from=1, to=n, length=N+1)[-(N+1)]
 	ys <- seq(from=1, to=m, length=M+1)[-(M+1)]
+	rm(.Random.seed, envir=globalenv())
 	outer(ys, xs, Vectorize(f))
 }
 
@@ -531,7 +533,7 @@ simulation <- function(Q=NULL, maxSteps=1000, text=F)
 	while (simData$running)
 	{		
 		simData <- simulationStep(simData, Q)
-		# simulationDraw(simData, text)
+		#simulationDraw(simData, text)
  
 		if (!isSimulationAlive(simData, maxSteps))
 			break	

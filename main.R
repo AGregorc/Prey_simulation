@@ -14,10 +14,11 @@ source("RL.R")
 # the vector c(30, 4, 5) defines the maximum values of the corresponding elements 
 # in the adopted state description
 
-qmat <- qlearning(c(20, 20, 20, 20, 5), maxtrials=1000)
+#qmat <- qlearning(c(5, 6, 4, 4, 4), maxtrials=1000)
+qmat <- qlearning(c(4, 10, 2), maxtrials=10000)
 
-save(qmat, file="qmat.RData")
-load(file="qmat.RData")
+save(qmat, file="qmatHiddenOnly_10k.RData")
+load(file="qmatDirections.RData")
 
 simulation(Q=qmat)
 
@@ -42,7 +43,7 @@ getAvg <- function(qmat) {
 }
 
 # just for testing if the function is working
-graphVector <- buildGraphVector(c(30, 4, 5), 100, 10000, 500)
-save(graphVector, file="graph.RData")
+graphVector <- buildGraphVector(c(4, 10, 2), 10000, 10, -500)
+save(graphVector, file="graphHiddenOnly.RData")
 
 
